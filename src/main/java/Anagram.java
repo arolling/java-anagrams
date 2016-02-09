@@ -24,6 +24,15 @@ public class Anagram {
 
   public static ArrayList<Object> anyAnagrams(String enteredWords) {
     ArrayList<Object> wordList = new ArrayList<Object>();
+    String[] splitWords = enteredWords.split(" ");
+    for (Integer i = 0 ; i < splitWords.length - 1 ; i++) {
+      for (Integer j = i + 1 ; j < splitWords.length ; j++) {
+        if(isAnagram(splitWords[i], splitWords[j])) {
+          wordList.add(splitWords[i]);
+          wordList.add(splitWords[j]);
+        }
+      }
+    }
     return wordList;
   }
 }

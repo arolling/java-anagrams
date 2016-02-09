@@ -20,9 +20,25 @@ public class AnagramTest {
   }
 
   @Test
+  public void isAnagram_compareNonAnagramWords_returnFalse() {
+    assertEquals(false, Anagram.isAnagram("married","ancestries"));
+  }
+
+  @Test
   public void anyAnagrams_splitsListOfTwoWordsAndChecksForAnagrams_returnAnagramArray() {
     ArrayList<Object> testList = new ArrayList<Object>();
-    testList.add(["resistance","ancestries"]);
-    assertEquals(testList, Anagram.isAnagram("resistance ancestries"));
+    String[] wordArray = {"resistance","ancestries"};
+    testList.add(wordArray[0]);
+    testList.add(wordArray[1]);
+    assertEquals(testList, Anagram.anyAnagrams("resistance ancestries"));
+  }
+
+  @Test
+  public void anyAnagrams_splitsListOfSeveralWordsAndChecksForAnagrams_returnAnagramArray() {
+    ArrayList<Object> testList = new ArrayList<Object>();
+    String[] wordArray = {"resistance", "return", "meteor", "ancestries"};
+    testList.add(wordArray[0]);
+    testList.add(wordArray[3]);
+    assertEquals(testList, Anagram.anyAnagrams("resistance return meteor ancestries"));
   }
 }
