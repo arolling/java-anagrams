@@ -1,6 +1,7 @@
 import java.util.HashMap;
 import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
@@ -22,17 +23,23 @@ public class Anagram {
     }
   }
 
-  public static ArrayList<Object> anyAnagrams(String enteredWords) {
-    ArrayList<Object> wordList = new ArrayList<Object>();
+  public static ArrayList<String> anyAnagrams(String enteredWords) {
+    ArrayList<String> wordList = new ArrayList<String>();
     String[] splitWords = enteredWords.split(" ");
+
     for (Integer i = 0 ; i < splitWords.length - 1 ; i++) {
       for (Integer j = i + 1 ; j < splitWords.length ; j++) {
         if(isAnagram(splitWords[i], splitWords[j])) {
-          wordList.add(splitWords[i]);
-          wordList.add(splitWords[j]);
+          if(!wordList.contains(splitWords[i])) {
+            wordList.add(splitWords[i]);
+          }
+          if(!wordList.contains(splitWords[j])) {
+            wordList.add(splitWords[j]);
+          }
         }
       }
     }
+    Collections.sort(wordList);
     return wordList;
   }
 }
