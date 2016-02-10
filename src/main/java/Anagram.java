@@ -9,7 +9,33 @@ import spark.template.velocity.VelocityTemplateEngine;
 import static spark.Spark.*;
 
 public class Anagram {
-  public static void main(String[] args) {}
+  public static void main(String[] args) {
+    staticFileLocation("/public");
+    String layout = "templates/layout.vtl";
+
+    get("/anagram", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+
+      model.put("template", "templates/anagram.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/isitananagram", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+
+      String enteredWords = request.queryParams("wordEntry");
+      enteredWords = enteredWords.toLowerCase();
+      ArrayList<String> foundWords = new ArrayList<String>();
+      foundWords = Anagram.anyAnagrams(enteredWords);
+      String foundWordsString = Anagram.anagramPrintout(foundWords);
+      model.put("originalWords", enteredWords);
+      model.put("foundWords", foundWordsString);
+      model.put("template", "templates/isitananagram.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+
+  }
 
   public static Boolean isAnagram(String wordOne, String wordTwo) {
     char[] wordOneChars = wordOne.toCharArray();
@@ -41,5 +67,13 @@ public class Anagram {
     }
     Collections.sort(wordList);
     return wordList;
+  }
+
+  public static String anagramPrintout(ArrayList<String> anagramArray) {
+    String prettyResult = "";
+    for (Integer i = 0 ; i < anagramArray.size() ; i++) {
+      prettyResult += "<li>" + anagramArray.get(i) + "</li>";
+    }
+    return prettyResult;
   }
 }
