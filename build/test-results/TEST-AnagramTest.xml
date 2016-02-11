@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="AnagramTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2016-02-09T23:30:30" hostname="epicodus-65.local" time="0.003">
+<testsuite name="AnagramTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2016-02-11T22:37:47" hostname="epicodus-66.local" time="0.004">
   <properties/>
-  <testcase name="anyAnagrams_ChecksForDuplicateAnagrams_returnAnagramArray" classname="AnagramTest" time="0.001"/>
+  <testcase name="anyAnagrams_ChecksForDuplicateAnagrams_returnAnagramArray" classname="AnagramTest" time="0.003"/>
   <testcase name="anyAnagrams_splitsListOfTwoWordsAndChecksForAnagrams_returnAnagramArray" classname="AnagramTest" time="0.0"/>
   <testcase name="anyAnagrams_splitsListOfSeveralWordsAndChecksForAnagrams_returnAnagramArray" classname="AnagramTest" time="0.0"/>
   <testcase name="isAnagram_compareCharacters_returnFalse" classname="AnagramTest" time="0.0"/>

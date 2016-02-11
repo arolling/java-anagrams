@@ -65,7 +65,6 @@ public class Anagram {
         }
       }
     }
-    Collections.sort(wordList);
     return wordList;
   }
 
@@ -73,6 +72,9 @@ public class Anagram {
     String prettyResult = "";
     for (Integer i = 0 ; i < anagramArray.size() ; i++) {
       prettyResult += "<li>" + anagramArray.get(i) + "</li>";
+      if (i+1 < anagramArray.size() && !isAnagram(anagramArray.get(i), anagramArray.get(i+1))) {
+        prettyResult += "</ul></div><div class='panel-body'><ul>";
+      }
     }
     return prettyResult;
   }
